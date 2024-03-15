@@ -10,7 +10,7 @@ It's namespace is @var packageNamespace
 '::get(': '.get(',
 ')::{': ', (rr, wr) => {',
 '}::req-end': '});',
-'::status = ': 'rr.sendStatus(',
+'::status = ': 'wr.sendStatus(',
 ' , send': ');',
 
 @pkg/definitions-end
