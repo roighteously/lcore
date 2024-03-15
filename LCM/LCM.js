@@ -1,7 +1,8 @@
 const lcoreClass = require('../src/index.js');
 const lcore = new lcoreClass();
 const fs = require('fs');
-const compiler = require('./PackageCompiler.js');
+const path = require('path');
+const compiler = require('../LCC/LCC').compile;
 
 const show_ifo = true;
 
@@ -11,7 +12,7 @@ if (show_ifo) console.group('(Build [1/3]) Hold on, compiling packages...');
 
 fs.readdirSync('./lcm_packages').forEach(file => {
 	if (file.endsWith('.synmod')) {
-		let cO = compiler(file.split('.synmod')[0]);
+		let cO = compiler(path.resolve(__dirname, './lcm_packages/' + file));
 		let cMod = cO.eval;
 		if (cMod.disabled) return;
 		lcore.addModule(cMod);

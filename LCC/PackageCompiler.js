@@ -3,7 +3,7 @@ const lcore = new lcoreo();
 
 lcore.addModule({
 	namespace: '',
-	name: 'LCM Package Compiler Syntax',
+	name: 'LangCore Compiler',
 	do: {
 		'@decl ': 'let dls_',
 		'@var ': 'dls_',
@@ -20,7 +20,7 @@ lcore.addModule({
 
 lcore._core.QUIET = true;
 const compilePackage = (packageName) => {
-	const lines = lcore.interpretFile('lcm_packages/' + packageName + '.synmod');
+	const lines = lcore.interpretFile(packageName);
 	return {
 		eval: eval(lines),
 		raw: lines
