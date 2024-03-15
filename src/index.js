@@ -1,34 +1,37 @@
 const LCore = require('./LCore');
 const config = require('../config') || {};
 
-const LangcoreWrapper = {
-	_core: LCore,
-	_config: config,
-	_cache: [],
-	addModule: (module) => {
-		LangcoreWrapper._core.modules.push(module);
-	},
-	interpretFile: (file) => {
-		LangcoreWrapper._cache = ['// Interpreted by LangCore'];
+class LangcoreWrapper {
+	_core= new LCore()
+	_config= config
+	_cache= []
+	addModule= (module) => {
+		this._core.modules.push(module);
+	}
+	interpretFile= (file) => {
+		this._cache = ['// Interpreted by LangCore'];
 		const fs = require('fs');
 		const data = fs.readFileSync(file, 'utf8').split('\n');
 		data.forEach(line => {
-			LangcoreWrapper._cache.push(LangcoreWrapper._core.exec(line));
+			this._cache.push(this._core.exec(line));
 		})
-		return LangcoreWrapper._cache.join('\n');
-	},
-	interpretLines: (lines) => {
-		LangcoreWrapper._cache = ['// Interpreted by LangCore'];
+		return this._cache.join('\n');
+	}
+	interpretLines= (lines) => {
+		this._cache = ['// Interpreted by LangCore'];
 		lines.forEach(line => {
-			LangcoreWrapper._cache.push(LangcoreWrapper._core.exec(line));
+			this._cache.push(this._core.exec(line));
 		});
-		return LangcoreWrapper._cache.join('\n');
-	},
-	get: (key) => {
-		return LangcoreWrapper._config[key];
-	},
-	set: (key, value) => {
-		LangcoreWrapper._config[key] = value;
+		return this._cache.join('\n');
+	}
+	get= (key) => {
+		return this._config[key];
+	}
+	set= (key,value) => {
+		this._config[key] = value;
+	}
+	constructor() {
+		return this;
 	}
 }
 
