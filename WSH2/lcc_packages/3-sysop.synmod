@@ -1,0 +1,20 @@
+@decl packageName = "System Operations"
+@decl packageNamespace = <NamespaceGlobal>
+
+@pkg/pkg-init
+//@disabled
+My package is called @var packageName
+It's namespace is @var packageNamespace
+@pkg/definitions-start
+
+'check': 'if(',
+'!_': ') {',
+'_': '{',
+'+': '}',
+'@@': '_',
+'@@@': '+',
+'equals': '==',
+'pl': '+'
+
+@pkg/definitions-end
+@pkg/pkg-end

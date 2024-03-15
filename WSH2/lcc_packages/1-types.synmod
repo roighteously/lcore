@@ -1,0 +1,16 @@
+@decl packageName = "Types"
+@decl packageNamespace = "type::"
+
+@pkg/pkg-init
+//@disabled
+My package is called @var packageName
+It's namespace is @var packageNamespace
+@pkg/definitions-start
+
+'str': 'String',
+'num': 'Number',
+'obj': 'Object',
+'dou': 'Number'
+
+@pkg/definitions-end
+@pkg/pkg-end

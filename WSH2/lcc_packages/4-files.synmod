@@ -1,0 +1,15 @@
+@decl packageName = "Files"
+@decl packageNamespace = "f."
+
+@pkg/pkg-init
+//@disabled
+My package is called @var packageName
+It's namespace is @var packageNamespace
+@pkg/definitions-start
+
+'init': 'const _wf = require("./lib/_wf.js"); _wf.init(); const fs = _wf.wf;',
+'wfs(': 'fs.writeFileSync("./_wf_sandbox/" +',
+'rfs(': 'fs.writeFileSync("./_wf_sandbox/" +',
+
+@pkg/definitions-end
+@pkg/pkg-end

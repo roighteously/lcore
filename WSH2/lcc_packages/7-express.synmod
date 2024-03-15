@@ -1,0 +1,17 @@
+@decl packageName = "ExpressJS"
+@decl packageNamespace = <NamespaceGlobal>
+
+@pkg/pkg-init
+//@disabled
+My package is called @var packageName
+It's namespace is @var packageNamespace
+@pkg/definitions-start
+
+'::get(': '.get(',
+')::{': ', (rr, wr) => {',
+'}::req-end': '});',
+'::status = ': 'rr.sendStatus(',
+' , send': ');',
+
+@pkg/definitions-end
+@pkg/pkg-end
