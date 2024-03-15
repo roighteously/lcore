@@ -6,7 +6,13 @@ technically a js substitution "framework"
 
 this project takes all the good parts of the (now defunct) WiLYSoft: HARD "engine", and merges it into a more extensible and readable format
 
-## how to use
+## how to use WSH2 (WiLYSoft: HARD 2: Electric WiLY)
+
+LCM exists to show you the basics of what you can do with langcore. WSH2, obtains *full feature parity between the original and langcore* (and is faster!) all while still showing you the power of langcore.
+
+to use WSH2, simply put your scripts into the WSH2/proj folder, and run `cd WSH2 && node WSH2`. your project will be built (and ran [at runtime]) in the `WSH2/build` directory.
+
+## how to use LCM/demo lang 1
 
 i've created a demo "package language" for syntax rules (.synmod) in LCM/lcm_packages and a "language" (verbose english) that takes all the .synmod packages and uses that for each LangCore module for better understanding of this system
 
