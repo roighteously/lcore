@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const compiler = require('../LCC/PackageCompiler.js');
 
+const folderBase = 'proj';
+
 const show_ifo = true;
 
 let cT = Date.now();
@@ -29,17 +31,17 @@ if (show_ifo) console.log('(Build [2/3]) Compiled ' + pC + ' packages in ' + (Da
 const interpret = (f) => {
 	let iT = Date.now();
 
-	const interpreted = lcore.interpretFile(require('path').resolve(__dirname, './proj/' + f));
+	const interpreted = lcore.interpretFile(require('path').resolve(__dirname, './' + folderBase +'/' + f));
 
 	if (show_ifo) console.log('(Build [3/3]) ' + (Date.now() - cT) + 'ms to compile back to JS (Starting from package compilation), ' + (Date.now() - iT) + 'ms to run interpret action');
 	
-	fs.writeFileSync('./build/' + f.split('.ws')[0]+'.js', interpreted);
+	fs.writeFileSync('./build/' + f.split('.ws')[0]+'.ws.js', interpreted);
 }
 
 const interpretMod = (f) => {
 	let iT = Date.now();
 
-	const interpreted = lcore.interpretFile(require('path').resolve(__dirname, './proj/' + f));
+	const interpreted = lcore.interpretFile(require('path').resolve(__dirname, './' + folderBase +'/' + f));
 
 	if (show_ifo) console.log('(Build [3/3]) ' + (Date.now() - cT) + 'ms to compile back to JS (Starting from package compilation), ' + (Date.now() - iT) + 'ms to run interpret action');
 	
@@ -58,7 +60,7 @@ if(!fs.existsSync('./build/lib')) fs.mkdirSync('./build/lib')
 fs.copyFileSync(path.resolve(__dirname, './lib/WSH2Files.js'), path.resolve(__dirname, './build/lib/_wf.js'));
 fs.copyFileSync(path.resolve(__dirname, './lib/WSH2Package.json'), path.resolve(__dirname, './build/package.json'));
 
-fs.readdirSync('./proj').forEach(file => {
+fs.readdirSync('./' + folderBase).forEach(file => {
 	if (file.endsWith('.mod.ws')) {
 		interpretMod(file);
  	} else if (file.endsWith('.ws')) {
@@ -68,4 +70,4 @@ fs.readdirSync('./proj').forEach(file => {
 
 if (show_ifo) console.log('\nNow launching WSH2 project.\n');
 
-require('./build/main.js')
+require('./build/main.ws')
