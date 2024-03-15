@@ -68,11 +68,4 @@ fs.readdirSync('./proj').forEach(file => {
 
 if (show_ifo) console.log('\nNow launching WSH2 project.\n');
 
-require('child_process').exec('node ./build/main.js', (err, stdout, stderr) => {
-	if (err) {
-		console.error(err);
-		return;
-	}
-	console.log(stdout);
-});
-
+require('./build/main.js')
