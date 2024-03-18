@@ -7,6 +7,9 @@ My package is called @var packageName
 It's namespace is @var packageNamespace
 @pkg/definitions-start
 
+'however,': '',
+'should': 'console.assert(',
+'be equal to': '==',
 '@': 'LCM_',
 'set': 'let',
 'equal to': '=',

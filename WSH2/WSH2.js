@@ -57,7 +57,8 @@ if(fs.existsSync('./lcc_packages/build')) fs.rmdirSync('./lcc_packages/build', {
 if(!fs.existsSync('./build')) fs.mkdirSync('./build')
 if(!fs.existsSync('./build/lib')) fs.mkdirSync('./build/lib')
 
-fs.copyFileSync(path.resolve(__dirname, './lib/WSH2Files.js'), path.resolve(__dirname, './build/lib/_wf.js'));
+fs.copyFileSync(path.resolve(__dirname, './lib/WSH2Files.js'), path.resolve(__dirname, './build/lib/files.ext.js'));
+fs.copyFileSync(path.resolve(__dirname, './lib/WSH2FilesLegacy.js'), path.resolve(__dirname, './build/lib/_wf.js'));
 fs.copyFileSync(path.resolve(__dirname, './lib/WSH2Package.json'), path.resolve(__dirname, './build/package.json'));
 
 fs.readdirSync('./' + folderBase).forEach(file => {
@@ -70,4 +71,4 @@ fs.readdirSync('./' + folderBase).forEach(file => {
 
 if (show_ifo) console.log('\nNow launching WSH2 project.\n');
 
-require('./build/main.ws')
+require('./build/' + (process.argv[2] ? process.argv[2] : 'main') + '.ws')

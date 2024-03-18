@@ -6,7 +6,8 @@ COMMENT!
 @ce
 
 @set ws::var mod = mod::locreq(modone)::get
-f.init
+
+wfs::init
 
 @set ws::var testname = type::str("String")
 @set ws::var testnum = type::num("12")
@@ -16,15 +17,17 @@ f.init
 
 @import:global
 
-@set ws::global varname@= type::str("Willy soft is the HARDEST!")
+@set ws::global varname @= type::str("Willy soft is the HARDEST!")
 
 ws::print(type::str("Testing gloabls:" pl @get:global varname@!))
 
 ws::print(type::str("String test.") pl @get testname)
 ws::print(type::str("Number test.") pl @get testnum)
-ws::print(type::str("Obj test.") pl @get ws::json::stringify(testobj))
+ws::print(type::str("Obj test.") pl ws::json::stringify(@get testobj))
 
-f.wfs("test.txt", @get testname)
+wfs::write("test.txt", @get testname)
+
+ws::printonln(wfs::read("test.txt") pl type::str("\n"))
 
 check @get testname equals type::str("String") !_
 	ws::print(type::str("Yes, testname equals String"))
@@ -33,4 +36,4 @@ check @get testname equals type::str("String") !_
 ws::printonln(@macro:willysaid)
 ws::print(@macro:willysaid)
 ws::print("Wowzer! An amazing programming languag.")
-mod::run
+@get mod::run
