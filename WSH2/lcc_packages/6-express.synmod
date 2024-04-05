@@ -13,5 +13,7 @@ It's namespace is @var packageNamespace
 '::status = ': 'wr.sendStatus(',
 ' , send': ');',
 
+'express:use-static': 'const useStatic=(expressA, appA, pathA)=>{appA.use(expressA.static(pathA))};useStatic',
+
 @pkg/definitions-end
 @pkg/pkg-end

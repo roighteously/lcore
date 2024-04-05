@@ -9,7 +9,7 @@ It's namespace is @var packageNamespace
 @pkg/definitions-start
 '@macro:willysaid': '"Willy said he\'s gonna disown me if I don\'t make this song!"',
 '@import:global': 'const l = {};',
-'@cs': '/*',
+'@cs': '\/*',
 '@ce': '*/',
 '@c': '//',
 '@set ': 'l',

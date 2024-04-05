@@ -4,6 +4,8 @@ ws::const app = @get express::run
 
 ws::const server = @get http.createServer(@get app)
 
+express:use-static(@get express, @get app, './a')
+
 @get app::get("/test")::{
 	ws::print(type::str("Wowzer.. Somebody went to /test!"))
 	::status = 200 , send
